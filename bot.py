@@ -56,13 +56,13 @@ def main():
   dp.add_handler(CommandHandler("start", start))
   dp.add_handler(CommandHandler("help", help))
 
-  dp.add_handler(MessageHandler(Filters.regex("caffeine")
-				| Filters.regex("coffee")
-				| Filters.regex("café")
-				| Filters.regex("caféine")
-				| Filters.regex("maté")
-				| Filters.regex("secte")
-				| Filters.regex("culte"), sus))
+  dp.add_handler(MessageHandler(Filters.regex(r"caffeine")
+				| Filters.regex(r"coffee")
+				| Filters.regex(r"café")
+				| Filters.regex(r"caféine")
+				| Filters.regex(r"maté")
+				| Filters.regex(r"secte")
+				| Filters.regex(r"culte"), sus))
   
   dp.add_error_handler(error)
 

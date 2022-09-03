@@ -8,7 +8,7 @@ import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
-PORT = int(os.environ.get('PORT', 5000))
+PORT = int(os.environ.get('PORT', 443))
 TOKEN = "5663089404:AAGO-_fsJfZkMTKLF5XijNvDLPgc_F8Iil4"
 
 
@@ -112,8 +112,8 @@ def main():
 
   updater.start_webhook(listen = '0.0.0.0', 
                         port = int(PORT), 
-                        url_path = TOKEN)
-  updater.bot.setWebhook('https://young-shore-01510.herokuapp.com/' + TOKEN)
+                        url_path = TOKEN,
+                        webhook_url=('https://young-shore-01510.herokuapp.com/' + TOKEN))
 
   updater.idle()
 

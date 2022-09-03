@@ -49,21 +49,21 @@ def help(update, context):
 def rocketscience(update, context):
   update.message.reply_sticker(theClassStickers["rocket"], quote=False)
 def cute(update, context):
-  update.bot.reply_sticker(theClassStickers["turtle"], quote=False)
+  update.message.reply_sticker(theClassStickers["turtle"], quote=False)
 def hullo(update, context):
-  update.bot.reply_sticker(theClassStickers["bird"], quote=False)
+  update.message.reply_sticker(theClassStickers["bird"], quote=False)
 def weird(update, context):
-  update.bot.reply_sticker(theClassStickers["man"], quote=False)
+  update.message.reply_sticker(theClassStickers["man"], quote=False)
 def sadge(update, context):
-  update.bot.reply_sticker(theClassStickers["cry"], quote=False)
+  update.message.reply_sticker(theClassStickers["cry"], quote=False)
 def wtf(update, context):
-  update.bot.reply_sticker(theClassStickers["jacopo"], quote=False)
+  update.message.reply_sticker(theClassStickers["jacopo"], quote=False)
 def crise(update, context):
-  update.bot.reply_sticker(theClassStickers["barbacrise"], quote=False)
+  update.message.reply_sticker(theClassStickers["barbacrise"], quote=False)
 def german(update, context):
-  update.bot.reply_sticker(theClassStickers["german"], quote=False)
+  update.message.reply_sticker(theClassStickers["german"], quote=False)
 def justdoit(update, context):
-  update.bot.reply_sticker(theClassStickers["sylvain"], quote=False)
+  update.message.reply_sticker(theClassStickers["sylvain"], quote=False)
 
 def sus(update, context):
   """suspicious"""
@@ -96,7 +96,7 @@ def main():
 				| Filters.regex(r"culte"), sus))
 
   # sticker reactions
-  dp.add_handler(MessageHandler(Filters.regex(r"rocket science"), rocketscience))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE)), rocketscience))
   '''
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE)), rocketscience))
   

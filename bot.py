@@ -8,7 +8,7 @@ import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
-PORT = int(os.environ.get('PORT', 443))
+PORT = int(os.environ.get('PORT', 8443))
 TOKEN = "5663089404:AAGO-_fsJfZkMTKLF5XijNvDLPgc_F8Iil4"
 
 

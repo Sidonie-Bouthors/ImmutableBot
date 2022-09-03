@@ -19,6 +19,17 @@ logging.basicConfig(format = "%(asctime)s - %(name)s - %(levelname)s  - %(messag
 logger = logging.getLogger(__name__)
 
 helpfulMood = False
+theClassStickers = {
+  "rocket" : "CAACAgQAAxkBAAEFv6xjE5C5lhvQHF9vTLzKSYpb0LPtHwACyAsAAsH_oVABPRbhJX7PtikE",
+  "turtle" : "CAACAgQAAxkBAAEFv65jE5DSt-GVLH4lXgoFZqXamOhstQACxwwAAl6eqFBd0IREErULECkE",
+  "bird" : "CAACAgQAAxkBAAEFv7BjE5Dm5svcfZDifjqvimBsqVNxiQACugoAAnAFqFDkbcaNnqE3NSkE",
+  "man" : "CAACAgQAAxkBAAEFv7JjE5DoAY7UF6ajcFjTxSv9SXcSsQAC_w0AAuqfoVDUaXef2lbKZikE",
+  "cry" : "CAACAgQAAxkBAAEFv7RjE5DqnBTCxjZifRSl4UmRi0d8WAACZQwAAoGZoVCsHPqFg2iyECkE",
+  "jacopo" : "CAACAgQAAxkBAAEFv7ZjE5DseHrs2hOqnvK6-iPII8oBKQACzAwAAtm9qFDeaa5Y86pQbSkE",
+  "barbacrise" : "CAACAgQAAxkBAAEFv7hjE5DtW7QN5rIx8Vh1AXoZ6nM7XwAC5QsAAqDmqVCnEArJAR84gykE",
+  "german" : "CAACAgQAAxkBAAEFv7pjE5DvyRrOfoMY8CASSvpYD8ubOgACRw8AAsHioFAx5z9yMbh5ISkE",
+  "sylvain" : "CAACAgQAAxkBAAEFv7xjE5DxQaTd7Auri5FsHMSf_H9wygAC0woAAra-qFDvV1-zx6_HLykE"
+}
 
 def start(update, context): 
   """reply when called upon for the first time"""
@@ -35,9 +46,28 @@ def help(update, context):
       """You are not deserving of my help
       """, parse_mode="HTML")
 
+def rocketscience(update, context):
+  update.bot.reply_sticker(theClassStickers["rocket"], quote=False)
+def cute(update, context):
+  update.bot.reply_sticker(theClassStickers["turtle"], quote=False)
+def hullo(update, context):
+  update.bot.reply_sticker(theClassStickers["bird"], quote=False)
+def weird(update, context):
+  update.bot.reply_sticker(theClassStickers["man"], quote=False)
+def sadge(update, context):
+  update.bot.reply_sticker(theClassStickers["cry"], quote=False)
+def wtf(update, context):
+  update.bot.reply_sticker(theClassStickers["jacopo"], quote=False)
+def crise(update, context):
+  update.bot.reply_sticker(theClassStickers["barbacrise"], quote=False)
+def german(update, context):
+  update.bot.reply_sticker(theClassStickers["german"], quote=False)
+def justdoit(update, context):
+  update.bot.reply_sticker(theClassStickers["sylvain"], quote=False)
+
 def sus(update, context):
   """suspicious"""
-  update.message.reply_text("Suspicious activity detected. Beware!")
+  update.message.reply_text("*Disapproval*")
 
 def trial(update, context): 
   """trial time"""
@@ -53,8 +83,9 @@ def main():
 
   dp = updater.dispatcher
 
-  dp.add_handler(CommandHandler("start", start))
-  dp.add_handler(CommandHandler("help", help))
+  #dp.add_handler(CommandHandler("start", start))
+  #dp.add_handler(CommandHandler("help", help))
+  dp.add_handler(CommandHandler("trial", trial))
 
   dp.add_handler(MessageHandler(Filters.regex(r"caffeine")
 				| Filters.regex(r"coffee")
@@ -63,6 +94,18 @@ def main():
 				| Filters.regex(r"maté")
 				| Filters.regex(r"secte")
 				| Filters.regex(r"culte"), sus))
+
+  dp.add_handler(MessageHandler(re.compile(r"rocket science", re.IGNORECASE), rocketscience))
+  dp.add_handler(MessageHandler(re.compile(r"cute", re.IGNORECASE), cute))
+  dp.add_handler(MessageHandler(re.compile(r"immutable", re.IGNORECASE)
+                                | re.compile(r"birb", re.IGNORECASE), hullo))
+  dp.add_handler(MessageHandler(re.compile(r"weird", re.IGNORECASE), weird))
+  dp.add_handler(MessageHandler(re.compile(r"sadge", re.IGNORECASE)
+                                | re.compile(r"ça dégoute", re.IGNORECASE), sadge))
+  dp.add_handler(MessageHandler(re.compile(r"wtf", re.IGNORECASE), wtf))
+  dp.add_handler(MessageHandler(re.compile(r"barbacrise", re.IGNORECASE), crise))
+  dp.add_handler(MessageHandler(re.compile(r"glutentag", re.IGNORECASE), german))
+  dp.add_handler(MessageHandler(re.compile(r"just do it", re.IGNORECASE), justdoit))
   
   dp.add_error_handler(error)
 

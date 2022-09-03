@@ -18,7 +18,7 @@ logging.basicConfig(format = "%(asctime)s - %(name)s - %(levelname)s  - %(messag
 
 logger = logging.getLogger(__name__)
 
-helpfulMood = false
+helpfulMood = False
 
 def start(update, context): 
   """reply when called upon for the first time"""
@@ -26,7 +26,7 @@ def start(update, context):
 
 def help(update, context):
   """offer help when help is requested? maybe"""
-  if (helfulMood) :
+  if (helpfulMood) :
     update.message.reply_text(
       """Fine, I shall help you
       """, parse_mode="HTML")

@@ -97,7 +97,8 @@ def main():
 				| Filters.regex(r"culte"), sus))
 
   # sticker reactions
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE)), rocketscience))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"space", re.IGNORECASE)), rocketscience))
   
   '''
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE)), rocketscience))

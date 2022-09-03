@@ -99,6 +99,9 @@ def main():
   # sticker reactions
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE)), rocketscience))
   
+  '''
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE)), rocketscience))
+  
   dp.add_handler(MessageHandler(filters.Regex(re.compile(r"cute", re.IGNORECASE)), cute))
 
   dp.add_handler(MessageHandler(filters.Regex(re.compile(r"immutable", re.IGNORECASE))
@@ -116,7 +119,7 @@ def main():
   dp.add_handler(MessageHandler(filters.Regex(re.compile(r"glutentag", re.IGNORECASE)), german))
 
   dp.add_handler(MessageHandler(filters.Regex(re.compile(r"just do it", re.IGNORECASE)), justdoit))
-  
+  '''
   dp.add_error_handler(error)
 
   updater.start_webhook(listen = '0.0.0.0', 

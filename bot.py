@@ -7,8 +7,8 @@ import random
 import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-PORT1 = int(os.environ.get('PORT', 5000))
-PORT2 = int(os.environ.get('PORT', 8443))
+PORT = int(os.environ.get('PORT', 5000))
+# PORT = int(os.environ.get('PORT', 8443))
 TOKEN = "5663089404:AAGO-_fsJfZkMTKLF5XijNvDLPgc_F8Iil4"
 
 
@@ -96,6 +96,7 @@ def main():
 				| Filters.regex(r"culte"), sus))
 
   # sticker reactions
+  '''
   dp.add_handler(MessageHandler(re.compile(r"rocket science", re.IGNORECASE), rocketscience))
   dp.add_handler(MessageHandler(re.compile(r"cute", re.IGNORECASE), cute))
   dp.add_handler(MessageHandler(re.compile(r"immutable", re.IGNORECASE)
@@ -107,11 +108,11 @@ def main():
   dp.add_handler(MessageHandler(re.compile(r"barbacrise", re.IGNORECASE), crise))
   dp.add_handler(MessageHandler(re.compile(r"glutentag", re.IGNORECASE), german))
   dp.add_handler(MessageHandler(re.compile(r"just do it", re.IGNORECASE), justdoit))
-  
+  '''
   dp.add_error_handler(error)
 
   updater.start_webhook(listen = '0.0.0.0', 
-                        port = int(PORT1), 
+                        port = int(PORT), 
                         url_path = TOKEN,
                         webhook_url=('https://young-shore-01510.herokuapp.com/' + TOKEN))
 

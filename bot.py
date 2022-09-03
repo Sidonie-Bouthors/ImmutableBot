@@ -7,8 +7,8 @@ import random
 import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-
-PORT = int(os.environ.get('PORT', 8443))
+PORT1 = int(os.environ.get('PORT', 5000))
+PORT2 = int(os.environ.get('PORT', 8443))
 TOKEN = "5663089404:AAGO-_fsJfZkMTKLF5XijNvDLPgc_F8Iil4"
 
 
@@ -43,7 +43,7 @@ def help(update, context):
       """, parse_mode="HTML")
   else :
     update.message.reply_text(
-      """You are not deserving of my help
+      """You don't deserve my help
       """, parse_mode="HTML")
 
 def rocketscience(update, context):
@@ -83,8 +83,8 @@ def main():
 
   dp = updater.dispatcher
 
-  #dp.add_handler(CommandHandler("start", start))
-  #dp.add_handler(CommandHandler("help", help))
+  dp.add_handler(CommandHandler("start", start))
+  dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
 
   dp.add_handler(MessageHandler(Filters.regex(r"caffeine")

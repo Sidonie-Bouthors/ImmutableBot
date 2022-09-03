@@ -47,7 +47,7 @@ def help(update, context):
       """, parse_mode="HTML")
 
 def rocketscience(update, context):
-  update.bot.reply_sticker(theClassStickers["rocket"], quote=False)
+  update.message.reply_sticker(theClassStickers["rocket"], quote=False)
 def cute(update, context):
   update.bot.reply_sticker(theClassStickers["turtle"], quote=False)
 def hullo(update, context):

@@ -32,7 +32,9 @@ theClassStickers = {
   "sylvain" : "CAACAgQAAxkBAAEFv7xjE5DxQaTd7Auri5FsHMSf_H9wygAC0woAAra-qFDvV1-zx6_HLykE"}
 
 supremacyStickers = {
-    "douchs" : "CAACAgQAAxkBAAEFwDBjE85Vqvuv1doSz3hbUfhqeJHHMgACGg0AAv3U8FD0INfU4047MSkE"
+    "douchs" : "CAACAgQAAxkBAAEFwDBjE85Vqvuv1doSz3hbUfhqeJHHMgACGg0AAv3U8FD0INfU4047MSkE",
+    "police" : "CAACAgQAAxkBAAEFwD5jE9ToUWPWRBM8SN93XKBxw2esiQACeQ4AAqCP4VDJc_52ogKXlSkE",
+    "cap" : "CAACAgQAAxkBAAEFwEBjE9UH9EqpCSw4oHqXB8No32-0pwACAg8AAu2xeFEgTcBWepCKCCkE"
 }
 
 maiStickers = {
@@ -64,6 +66,7 @@ def help(update, context):
       """You don't deserve my help
       """, parse_mode="HTML")
 
+##### The Class Stickers #####
 def rocketscience(update, context):
   update.message.reply_sticker(theClassStickers["rocket"], quote=False)
 def cute(update, context):
@@ -72,9 +75,9 @@ def hullo(update, context):
   update.message.reply_sticker(theClassStickers["bird"], quote=False)
 def weird(update, context):
   update.message.reply_sticker(theClassStickers["man"], quote=False)
-def sadge(update, context):
+def sad(update, context):
   update.message.reply_sticker(theClassStickers["cry"], quote=False)
-def wtf(update, context):
+def jacopo(update, context):
   update.message.reply_sticker(theClassStickers["jacopo"], quote=False)
 def crise(update, context):
   update.message.reply_sticker(theClassStickers["barbacrise"], quote=False)
@@ -83,23 +86,24 @@ def german(update, context):
 def justdoit(update, context):
   update.message.reply_sticker(theClassStickers["sylvain"], quote=False)
 
+#### Cyrielle's Stickers #####
 def hehe(update, context):
-  """hehe"""
   if not update.message.from_user.username == "sidonie_b" :
     update.message.reply_sticker(cyrielleStickers["not hehe"], quote=False)
-
 def aie(update, context):
-  """aie aie aie"""
   update.message.reply_sticker(cyrielleStickers["aie"], quote=False)
-
 def nospray(update, context):
-  """no spray"""
   update.message.reply_sticker(cyrielleStickers["no spray"], quote=False)
 
+##### Supremacy Stickers #####
 def douchs(update, context):
-  """no shower"""
   update.message.reply_sticker(supremacyStickers["douchs"], quote=False)
+def police(update, context):
+  update.message.reply_sticker(supremacyStickers["police"], quote=False)
+def cap(update, context):
+  update.message.reply_sticker(supremacyStickers["cap"], quote=False)
 
+##### Maï's Stickers #####
 def sadge(update, context):
   update.message.reply_sticker(maiStickers["sadge"], quote=False)
 def gay(update, context):
@@ -111,17 +115,14 @@ def happy(update, context):
 def tirwed(update, context):
   update.message.reply_sticker(maiStickers["tirwed"], quote=False)
 
-def sus(update, context):
-  """suspicious"""
+def disapproval(update, context):
   if not update.message.from_user.username == "sidonie_b" :
     update.message.reply_text("*Disapproval*")
 
-def trial(update, context): 
-  """trial time"""
+def trial(update, context):
   update.message.reply_text("Trial is in session!")
 
-def error(update, context): 
-  """error"""
+def error(update, context):
   logger.error(f"You broke something, fix it : {context.error}")
 
 def main(): 
@@ -140,25 +141,29 @@ def main():
 				| Filters.regex(re.compile(r"caféine", re.IGNORECASE))
 				| Filters.regex(re.compile(r"maté", re.IGNORECASE))
 				| Filters.regex(re.compile(r"secte", re.IGNORECASE))
-				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), sus))
+				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), disapproval))
 
   # hehe
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), hehe))
-
   # aie aie aie
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"aie aie aie", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"aïe aïe aïe", re.IGNORECASE)), aie))
-  
   # no shrug
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"shrug", re.IGNORECASE)), nospray))
-  
   # no shower
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"douchs", re.IGNORECASE)), douchs))
+  # cap
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"cap", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"casquette", re.IGNORECASE)), cap))
+  # police
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"police", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"st sulpice", re.IGNORECASE)), police))
   
   # maï sticker reactions
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE)), sadge))
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"gay", re.IGNORECASE)), gay))
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"tirwed", re.IGNORECASE)), tirwed))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"tired", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"tirwed", re.IGNORECASE)), tirwed))
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"happy", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"h^^py", re.IGNORECASE)), happy))
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"fast", re.IGNORECASE)), fast))
@@ -184,13 +189,15 @@ def main():
                                 | Filters.regex(re.compile(r"ça dégoute", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"dégoute", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"degoute", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"tristitude", re.IGNORECASE)), sadge))
+                                | Filters.regex(re.compile(r"tristitude", re.IGNORECASE)), sad))
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"wtf", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"i never lie", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"never lied", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"andiamo", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"aggiudi cato", re.IGNORECASE)), wtf))
+                                | Filters.regex(re.compile(r"aggiudi cato", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"big fan of harm", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"bitch i lie all the time too", re.IGNORECASE)), jacopo))
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"barbacrise", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"barbapapa", re.IGNORECASE))

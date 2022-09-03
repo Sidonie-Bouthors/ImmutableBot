@@ -29,12 +29,25 @@ theClassStickers = {
   "jacopo" : "CAACAgQAAxkBAAEFv7ZjE5DseHrs2hOqnvK6-iPII8oBKQACzAwAAtm9qFDeaa5Y86pQbSkE",
   "barbacrise" : "CAACAgQAAxkBAAEFv7hjE5DtW7QN5rIx8Vh1AXoZ6nM7XwAC5QsAAqDmqVCnEArJAR84gykE",
   "german" : "CAACAgQAAxkBAAEFv7pjE5DvyRrOfoMY8CASSvpYD8ubOgACRw8AAsHioFAx5z9yMbh5ISkE",
-  "sylvain" : "CAACAgQAAxkBAAEFv7xjE5DxQaTd7Auri5FsHMSf_H9wygAC0woAAra-qFDvV1-zx6_HLykE",
-  "not hehe" : "CAACAgQAAxkBAAEFwBtjE8eJPmfCPSULZas6K7CK7uuxbwACgwwAAjcQ8FD8WTJixoO_9CkE",
-  "aie" : "CAACAgQAAxkBAAEFwBljE8eHYOjUIhljmH2WGZecAif62wACSw0AApvA8VAAAScgDvSNStYpBA",
+  "sylvain" : "CAACAgQAAxkBAAEFv7xjE5DxQaTd7Auri5FsHMSf_H9wygAC0woAAra-qFDvV1-zx6_HLykE"}
+
+supremacyStickers = {
+    "douchs" : "CAACAgQAAxkBAAEFwDBjE85Vqvuv1doSz3hbUfhqeJHHMgACGg0AAv3U8FD0INfU4047MSkE"
+}
+
+maiStickers = {
   "gay" : "CAACAgQAAxkBAAEFwB1jE8ll62np5bw1GSb7Is0pW66Q5QACzgsAAnHZ4FBw8LWarlpc-ykE",
   "sadge" : "CAACAgQAAxkBAAEFwB9jE8lxRTLAeOR47XfrAts-AlljLgACJwoAAgudsFAVhZgqZ46DhikE",
-  "no spray" : "CAACAgQAAxkBAAEFwCZjE8puZUyvPonz-ly4KXMX8XagVAACOQ4AAn99sFDTRqqD6tXZfSkE"}
+  "tirwed" : "CAACAgQAAxkBAAEFwDRjE8_5ffUrP-3xbH1paVMSFfCaYwACEQoAAi5AaFDM6Wnglkif7ykE",
+  "happy" : "CAACAgQAAxkBAAEFwDZjE8_8M_Zu_50B267iu1wJ0kBMSgACsRMAAnOssVD63eo-raRwrykE",
+  "fast" : "CAACAgQAAxkBAAEFwDhjE8_-opVHtKYYPvScg50s0LFAGQACXg0AAkVG4FB78iLdMI2cGykE"
+}
+
+cyrielleStickers = {
+  "not hehe" : "CAACAgQAAxkBAAEFwBtjE8eJPmfCPSULZas6K7CK7uuxbwACgwwAAjcQ8FD8WTJixoO_9CkE",
+  "aie" : "CAACAgQAAxkBAAEFwBljE8eHYOjUIhljmH2WGZecAif62wACSw0AApvA8VAAAScgDvSNStYpBA",
+  "no spray" : "CAACAgQAAxkBAAEFwCZjE8puZUyvPonz-ly4KXMX8XagVAACOQ4AAn99sFDTRqqD6tXZfSkE"
+}
 
 def start(update, context): 
   """reply when called upon for the first time"""
@@ -73,23 +86,30 @@ def justdoit(update, context):
 def hehe(update, context):
   """hehe"""
   if not update.message.from_user.username == "sidonie_b" :
-    update.message.reply_sticker(theClassStickers["not hehe"], quote=False)
+    update.message.reply_sticker(cyrielleStickers["not hehe"], quote=False)
 
 def aie(update, context):
   """aie aie aie"""
-  update.message.reply_sticker(theClassStickers["aie"], quote=False)
-
-def sadge(update, context):
-  """sadge"""
-  update.message.reply_sticker(theClassStickers["sadge"], quote=False)
-
-def gay(update, context):
-  """gay"""
-  update.message.reply_sticker(theClassStickers["gay"], quote=False)
+  update.message.reply_sticker(cyrielleStickers["aie"], quote=False)
 
 def nospray(update, context):
   """no spray"""
-  update.message.reply_sticker(theClassStickers["no spray"], quote=False)
+  update.message.reply_sticker(cyrielleStickers["no spray"], quote=False)
+
+def douchs(update, context):
+  """no shower"""
+  update.message.reply_sticker(supremacyStickers["douchs"], quote=False)
+
+def sadge(update, context):
+  update.message.reply_sticker(maiStickers["sadge"], quote=False)
+def gay(update, context):
+  update.message.reply_sticker(maiStickers["gay"], quote=False)
+def fast(update, context):
+  update.message.reply_sticker(maiStickers["fast"], quote=False)
+def happy(update, context):
+  update.message.reply_sticker(maiStickers["happy"], quote=False)
+def tirwed(update, context):
+  update.message.reply_sticker(maiStickers["tirwed"], quote=False)
 
 def sus(update, context):
   """suspicious"""
@@ -129,14 +149,19 @@ def main():
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"aie aie aie", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"aïe aïe aïe", re.IGNORECASE)), aie))
   
-  # sadge
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE)), sadge))
-  
-  # gay
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"gay", re.IGNORECASE)), gay))
-  
   # no shrug
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"shrug", re.IGNORECASE)), nospray))
+  
+  # no shower
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"douchs", re.IGNORECASE)), douchs))
+  
+  # maï sticker reactions
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE)), sadge))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"gay", re.IGNORECASE)), gay))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"tirwed", re.IGNORECASE)), tirwed))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"happy", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"h^^py", re.IGNORECASE)), happy))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"fast", re.IGNORECASE)), fast))
   
   # immutable sticker reactions
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE))
@@ -157,10 +182,13 @@ def main():
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"triste", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"ça dégoute", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"dégoute", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"degoute", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"tristitude", re.IGNORECASE)), sadge))
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"wtf", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"i never lie", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"never lied", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"andiamo", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"aggiudi cato", re.IGNORECASE)), wtf))
 

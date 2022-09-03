@@ -100,27 +100,24 @@ def main():
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"space", re.IGNORECASE)), rocketscience))
   
-  '''
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE)), rocketscience))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"cute", re.IGNORECASE)), cute))
+
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"immutable", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"birb", re.IGNORECASE)), hullo))
+
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"weird", re.IGNORECASE)), weird))
+
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"ça dégoute", re.IGNORECASE)), sadge))
+
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"wtf", re.IGNORECASE)), wtf))
+
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"barbacrise", re.IGNORECASE)), crise))
+
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"glutentag", re.IGNORECASE)), german))
+
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"just do it", re.IGNORECASE)), justdoit))
   
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"cute", re.IGNORECASE)), cute))
-
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"immutable", re.IGNORECASE))
-                                | filters.Regex(re.compile(r"birb", re.IGNORECASE)), hullo))
-
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"weird", re.IGNORECASE)), weird))
-
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"sadge", re.IGNORECASE))
-                                | filters.Regex(re.compile(r"ça dégoute", re.IGNORECASE)), sadge))
-
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"wtf", re.IGNORECASE)), wtf))
-
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"barbacrise", re.IGNORECASE)), crise))
-
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"glutentag", re.IGNORECASE)), german))
-
-  dp.add_handler(MessageHandler(filters.Regex(re.compile(r"just do it", re.IGNORECASE)), justdoit))
-  '''
   dp.add_error_handler(error)
 
   updater.start_webhook(listen = '0.0.0.0', 

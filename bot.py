@@ -95,6 +95,7 @@ def main():
 				| Filters.regex(r"secte")
 				| Filters.regex(r"culte"), sus))
 
+  # sticker reactions
   dp.add_handler(MessageHandler(re.compile(r"rocket science", re.IGNORECASE), rocketscience))
   dp.add_handler(MessageHandler(re.compile(r"cute", re.IGNORECASE), cute))
   dp.add_handler(MessageHandler(re.compile(r"immutable", re.IGNORECASE)

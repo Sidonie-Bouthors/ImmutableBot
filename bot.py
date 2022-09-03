@@ -88,35 +88,44 @@ def main():
   # dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
 
-  dp.add_handler(MessageHandler(Filters.regex(r"caffeine")
-				| Filters.regex(r"coffee")
-				| Filters.regex(r"café")
-				| Filters.regex(r"caféine")
-				| Filters.regex(r"maté")
-				| Filters.regex(r"secte")
-				| Filters.regex(r"culte"), sus))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"caffeine", re.IGNORECASE))
+				| Filters.regex(re.compile(r"coffee", re.IGNORECASE))
+				| Filters.regex(re.compile(r"café", re.IGNORECASE))
+				| Filters.regex(re.compile(r"caféine", re.IGNORECASE))
+				| Filters.regex(re.compile(r"maté", re.IGNORECASE))
+				| Filters.regex(re.compile(r"secte", re.IGNORECASE))
+				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), sus))
+
+  # dp.add_handler(MessageHandler(Filters.sticker, sus))
 
   # sticker reactions
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"space", re.IGNORECASE)), rocketscience))
   
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"cute", re.IGNORECASE)), cute))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"cute", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"aww", re.IGNORECASE)), cute))
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"immutable", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"immubot", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"birb", re.IGNORECASE)), hullo))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"weird", re.IGNORECASE)), weird))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"weird", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"clotilde", re.IGNORECASE)), weird))
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"ça dégoute", re.IGNORECASE)), sadge))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"wtf", re.IGNORECASE)), wtf))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"wtf", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"i never lie", re.IGNORECASE)), wtf))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"barbacrise", re.IGNORECASE)), crise))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"barbacrise", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"barbapapa", re.IGNORECASE)), crise))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"glutentag", re.IGNORECASE)), german))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"glutentag", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"allemand", re.IGNORECASE)), german))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"just do it", re.IGNORECASE)), justdoit))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"just do it", re.IGNORECASE))
+                                | Filters.regex(re.compile(r"zylvanos", re.IGNORECASE)), justdoit))
   
   dp.add_error_handler(error)
 

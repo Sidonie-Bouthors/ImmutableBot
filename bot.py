@@ -147,51 +147,52 @@ def main():
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
-  autoSticker(supremacyPack["sacrebleu"], "test2", "test1")
-  autoSticker(supremacyPack["sacrejaune"], "test3")
-  autoSticker(supremacyPack["blasphème pink"], "test4", exceptUsers=["quartztz"])
-  autoSticker(supremacyPack["blasphème jaune"], "test5", exceptUsers=["sidonie_b"])
-
-  # hehe
   autoSticker(cyriellePack["not hehe"], "hehe", exceptUsers=["sidonie_b"])
-  # aie aie aie
-  autoSticker(cyriellePack["aie"], "aie aie aie", "aïe aïe aïe")
-  # no shrug
+  autoSticker(cyriellePack["aie"],      "aie aie aie", "aïe aïe aïe")
   autoSticker(cyriellePack["no spray"], "shrug")
-  # no shower
-  autoSticker(supremacyPack["douchs"], "douchs")
-  # cap
-  autoSticker(supremacyPack["cap"], "cap", "casquette")
-  # police
-  autoSticker(supremacyPack["police"], "police", "st sulpice")
+  autoSticker(supremacyPack["douchs"],  "douchs")
+  autoSticker(supremacyPack["cap"],     "cap", "casquette")
+  autoSticker(supremacyPack["police"],  "police", "st sulpice")
   
   # maï sticker reactions
-  dp.add_handler(MessageHandler(regexFilter("sadge"), react(maiPack["sadge"])))
-  dp.add_handler(MessageHandler(regexFilter("gay"), react(maiPack["gay"])))
-  dp.add_handler(MessageHandler(regexFilter("tired", "tirwed"), react(maiPack["tirwed"])))
-  dp.add_handler(MessageHandler(regexFilter("happy", "h\^\^py"), react(maiPack["happy"])))
-  dp.add_handler(MessageHandler(regexFilter("fast"), react(maiPack["fast"])))
+  autoSticker(maiPack["sadge"],   "sadge")
+  autoSticker(maiPack["gay"],     "gay")
+  autoSticker(maiPack["tirwed"],  "tired", "tirwed")
+  autoSticker(maiPack["happy"],   "happy", "h\^\^py")
+  autoSticker(maiPack["fast"],    "fast")
   
   # immutable sticker reactions
-  dp.add_handler(MessageHandler(regexFilter("rocket science","space", "nerd"), react(classPack["rocket"])))
-  dp.add_handler(MessageHandler(regexFilter("cute", "aww", "turtle"), react(classPack["turtle"])))
-  dp.add_handler(MessageHandler(regexFilter("immutable", "immubot", "birb"), react(classPack["bird"])))
-  dp.add_handler(MessageHandler(regexFilter("weird", "clotilde", "kluter"), react(classPack["man"])))
-  dp.add_handler(MessageHandler(regexFilter("triste", 
-                                            "ça dégoute", 
-                                            "dégoute", 
-                                            "degoute", 
-                                            "tristitude"), react(classPack["cry"])))
-  dp.add_handler(MessageHandler(regexFilter("wtf", 
-                                            "i never lie", 
-                                            "never lied", 
-                                            "andiamo", 
-                                            "aggiudi cato",
-                                            "big fan of harm", 
-                                            "bitch i lie all the time too"), react(classPack["jacopo"])))
-  dp.add_handler(MessageHandler(regexFilter("barbacrise", "barbapapa", "terrible"), react(classPack["barbacrise"])))
-  dp.add_handler(MessageHandler(regexFilter("glutentag", "allemand"), react(classPack["german"])))
-  dp.add_handler(MessageHandler(regexFilter("just do it", "zylvanos"), react(classPack["sylvain"])))
+  autoSticker(classPack["rocket"],      "rocket science",
+                                        "space", 
+                                        "nerd")
+  autoSticker(classPack["turtle"],      "cute", 
+                                        "aww", 
+                                        "turtle")
+  autoSticker(classPack["bird"],        "immutable", 
+                                        "immubot", 
+                                        "birb")
+  autoSticker(classPack["man"],         "weird", 
+                                        "clotilde", 
+                                        "kluter")
+  autoSticker(classPack["cry"],         "triste", 
+                                        "ça dégoute", 
+                                        "dégoute", 
+                                        "degoute", 
+                                        "tristitude")
+  autoSticker(classPack["jacopo"],      "wtf", 
+                                        "i never lie", 
+                                        "never lied", 
+                                        "andiamo", 
+                                        "aggiudi cato",
+                                        "big fan of harm", 
+                                        "bitch i lie all the time too")
+  autoSticker(classPack["barbacrise"],  "barbacrise", 
+                                        "barbapapa", 
+                                        "terrible")
+  autoSticker(classPack["german"],      "glutentag", 
+                                        "allemagne")
+  autoSticker(classPack["sylvain"],     "just do it", 
+                                        "zylvanos")
   
   dp.add_error_handler(error)
 

@@ -19,6 +19,7 @@ logging.basicConfig(format = "%(asctime)s - %(name)s - %(levelname)s  - %(messag
 
 logger = logging.getLogger(__name__)
 
+BOSS = "sidonie_b"
 helpfulMood = False
 
 theClassStickers = {
@@ -119,7 +120,7 @@ def nospray(update, context):
 # def react(sticker):
 #   return lambda update, context : update.message.reply_sticker(sticker, quote=False)
   
-def react(sticker, exceptUser = ""):
+def react(sticker, exceptUser = None):
   return lambda update, context : update.message.reply_sticker(sticker, quote=False) if not update.message.from_user.username == exceptUser else None
  
 
@@ -155,7 +156,7 @@ def main():
 				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), disapproval))
 
   # hehe
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), react(cyrielleStickers["not hehe"])))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), react(cyrielleStickers["not hehe"], BOSS)))
   # aie aie aie
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"aie aie aie", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"aïe aïe aïe", re.IGNORECASE)), react(cyrielleStickers["aie"])))

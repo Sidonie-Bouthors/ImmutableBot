@@ -180,7 +180,7 @@ def main():
   # dp.add_handler(CommandHandler("start", start))
   # dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
-  dp.add_handler(CommandHandler("test", react(stickerPack=maiStickers, stickerName="happy")))
+  # dp.add_handler(CommandHandler("test", react(stickerPack=maiStickers, stickerName="happy")))
 
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"caffeine", re.IGNORECASE))

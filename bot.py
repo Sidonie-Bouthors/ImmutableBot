@@ -193,7 +193,7 @@ def main():
 				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), disapproval))
 
   # hehe
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), cyrielleStickers["not hehe"]))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), react(cyrielleStickers["not hehe"])))
   # aie aie aie
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"aie aie aie", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"aïe aïe aïe", re.IGNORECASE)), aie))
@@ -209,13 +209,13 @@ def main():
                                 | Filters.regex(re.compile(r"st sulpice", re.IGNORECASE)), police))
   
   # maï sticker reactions
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE)), sadge))
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"gay", re.IGNORECASE)), gay))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE)), react(maiStickers["sadge"])))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"gay", re.IGNORECASE)), react(maiStickers["gay"])))
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"tired", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"tirwed", re.IGNORECASE)), tirwed))
+                                | Filters.regex(re.compile(r"tirwed", re.IGNORECASE)), react(maiStickers["tirwed"])))
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"happy", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"h^^py", re.IGNORECASE)), happy))
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"fast", re.IGNORECASE)), fast))
+                                | Filters.regex(re.compile(r"h^^py", re.IGNORECASE)), react(maiStickers["happy"])))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"fast", re.IGNORECASE)), react(maiStickers["fast"])))
   
   # immutable sticker reactions
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE))

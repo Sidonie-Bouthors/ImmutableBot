@@ -140,16 +140,7 @@ def main():
   dp.add_handler(CommandHandler("trial", trial))
   dp.add_handler(CommandHandler("test", react(maiStickers["happy"])))
 
-  '''
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"caffeine", re.IGNORECASE))
-				| Filters.regex(re.compile(r"coffee", re.IGNORECASE))
-				| Filters.regex(re.compile(r"café", re.IGNORECASE))
-				| Filters.regex(re.compile(r"caféine", re.IGNORECASE))
-				| Filters.regex(re.compile(r"maté", re.IGNORECASE))
-				| Filters.regex(re.compile(r"secte", re.IGNORECASE))
-				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), disapproval))
-  '''
-  dp.add_handler(MessageHandler(regexFilter("coffee", "café", "maté"), disapproval))
+  dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
   # hehe
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), react(cyrielleStickers["not hehe"], BOSS)))
@@ -168,13 +159,11 @@ def main():
                                 | Filters.regex(re.compile(r"st sulpice", re.IGNORECASE)), react(supremacyStickers["police"])))
   
   # maï sticker reactions
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"sadge", re.IGNORECASE)), react(maiStickers["sadge"])))
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"gay", re.IGNORECASE)), react(maiStickers["gay"])))
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"tired", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"tirwed", re.IGNORECASE)), react(maiStickers["tirwed"])))
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"happy", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"h^^py", re.IGNORECASE)), react(maiStickers["happy"])))
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"fast", re.IGNORECASE)), react(maiStickers["fast"])))
+  dp.add_handler(MessageHandler(regexFilter("sadge"), react(maiStickers["sadge"])))
+  dp.add_handler(MessageHandler(regexFilter("gay"), react(maiStickers["gay"])))
+  dp.add_handler(MessageHandler(regexFilter("tired", "tirwed"), react(maiStickers["tirwed"])))
+  dp.add_handler(MessageHandler(regexFilter(r"happy", r"ha^^py"), react(maiStickers["happy"])))
+  dp.add_handler(MessageHandler(regexFilter("fast"), react(maiStickers["fast"])))
   
   # immutable sticker reactions
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE))

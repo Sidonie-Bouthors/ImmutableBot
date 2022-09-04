@@ -107,24 +107,17 @@ def help(update, context):
       """You don't deserve my help
       """, parse_mode="HTML")
 
-#### Cyrielle's Stickers #####
-def hehe(update, context):
-  if not update.message.from_user.username == "sidonie_b" :
-    update.message.reply_sticker(cyrielleStickers["not hehe"], quote=False)
-def aie(update, context):
-  update.message.reply_sticker(cyrielleStickers["aie"], quote=False)
-def nospray(update, context):
-  update.message.reply_sticker(cyrielleStickers["no spray"], quote=False)
-
 ##### TESTS #####
-# def react(sticker):
-#   return lambda update, context : update.message.reply_sticker(sticker, quote=False)
-  
+
+def regex(main, *keywords) : 
+  for k in keywords :
+    main |= Filters.regex(re.compile(k, re.IGNORECASE))
+  return main
+
+##### Reactions #####
 def react(sticker, exceptUser = None):
   return lambda update, context : update.message.reply_sticker(sticker, quote=False) if not update.message.from_user.username == exceptUser else None
  
-
-##### Text Reactions #####
 def disapproval(update, context):
   if not update.message.from_user.username == "sidonie_b" :
     update.message.reply_text("*Disapproval*")
@@ -148,7 +141,7 @@ def main():
 
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"caffeine", re.IGNORECASE))
-				| Filters.regex(re.compile(r"coffee", re.IGNORECASE))
+				| Filters.regex(re.compile("coffee", re.IGNORECASE))
 				| Filters.regex(re.compile(r"café", re.IGNORECASE))
 				| Filters.regex(re.compile(r"caféine", re.IGNORECASE))
 				| Filters.regex(re.compile(r"maté", re.IGNORECASE))

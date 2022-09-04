@@ -147,9 +147,9 @@ def main():
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
-  autoSticker(dp, supremacyStickers["sacrebleu"], [], "test1")
-  autoSticker(dp, supremacyStickers["blasphème pink"], ["quartztz"], "test1")
-  autoSticker(dp, supremacyStickers["blasphème jaune"], ["sidonie_b"], "test2")
+  # autoSticker(dp, supremacyStickers["sacrebleu"], [], "test1")
+  # autoSticker(dp, supremacyStickers["blasphème pink"], ["quartztz"], "test1")
+  # autoSticker(dp, supremacyStickers["blasphème jaune"], ["sidonie_b"], "test2")
 
   # hehe
   # dp.add_handler(MessageHandler(regexFilter("hehe"), react(cyrielleStickers["not hehe"], BOSS)))

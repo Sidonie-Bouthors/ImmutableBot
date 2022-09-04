@@ -109,18 +109,19 @@ def help(update, context):
 
 ##### TESTS #####
 
-def regex(main, *keywords) : 
+def regexFilter(main, *keywords) : 
+  filters = Filters.regex(re.compile(main, re.IGNORECASE))
   for k in keywords :
-    main |= Filters.regex(re.compile(k, re.IGNORECASE))
-  return main
+    filters |= Filters.regex(re.compile(k, re.IGNORECASE))
+  return filters
 
 ##### Reactions #####
 def react(sticker, exceptUser = None):
   return lambda update, context : update.message.reply_sticker(sticker, quote=False) if not update.message.from_user.username == exceptUser else None
  
 def disapproval(update, context):
-  if not update.message.from_user.username == "sidonie_b" :
-    update.message.reply_text("*Disapproval*")
+  # if not update.message.from_user.username == "sidonie_b" :
+  update.message.reply_text("*Disapproval*")
 
 def trial(update, context):
   update.message.reply_text("Trial is in session!")
@@ -139,14 +140,16 @@ def main():
   dp.add_handler(CommandHandler("trial", trial))
   dp.add_handler(CommandHandler("test", react(maiStickers["happy"])))
 
-
+  '''
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"caffeine", re.IGNORECASE))
-				| Filters.regex(re.compile("coffee", re.IGNORECASE))
+				| Filters.regex(re.compile(r"coffee", re.IGNORECASE))
 				| Filters.regex(re.compile(r"café", re.IGNORECASE))
 				| Filters.regex(re.compile(r"caféine", re.IGNORECASE))
 				| Filters.regex(re.compile(r"maté", re.IGNORECASE))
 				| Filters.regex(re.compile(r"secte", re.IGNORECASE))
 				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), disapproval))
+  '''
+  dp.add_handler(MessageHandler(regexFilter("coffee", "café", "maté"), disapproval))
 
   # hehe
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), react(cyrielleStickers["not hehe"], BOSS)))

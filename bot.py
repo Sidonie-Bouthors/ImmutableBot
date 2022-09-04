@@ -115,8 +115,8 @@ def regexFilter(main, *keywords) :
     filters |= Filters.regex(re.compile(k, re.IGNORECASE))
   return filters
   
-def autoSticker(dp, reaction, *keywords) :
-  dp.add_handler(MessageHandler(regexFilter(*keywords), react(reaction)))
+def autoSticker(dp, reaction, *keywords, exceptUsers=[]) :
+  dp.add_handler(MessageHandler(regexFilter(*keywords), react(reaction, exceptUsers)))
 
 ##### Reactions #####
 def react(sticker, exceptUsers=[]):
@@ -147,7 +147,7 @@ def main():
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
-  autoSticker(dp, supremacyStickers["sacrebleu"], "test", "test1")
+  autoSticker(dp, supremacyStickers["sacrebleu"], "test3", "test1")
   autoSticker(dp, supremacyStickers["sacrejaune"], "test2")
   # autoSticker(dp, supremacyStickers["blasphème pink"], ["quartztz"], "test1")
   # autoSticker(dp, supremacyStickers["blasphème jaune"], ["sidonie_b"], "test2")

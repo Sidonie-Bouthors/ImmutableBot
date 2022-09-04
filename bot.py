@@ -162,7 +162,7 @@ def main():
   dp.add_handler(MessageHandler(regexFilter("sadge"), react(maiStickers["sadge"])))
   dp.add_handler(MessageHandler(regexFilter("gay"), react(maiStickers["gay"])))
   dp.add_handler(MessageHandler(regexFilter("tired", "tirwed"), react(maiStickers["tirwed"])))
-  dp.add_handler(MessageHandler(regexFilter(r"happy", r"ha^^py"), react(maiStickers["happy"])))
+  dp.add_handler(MessageHandler(regexFilter("happy", "ha\^\^py"), react(maiStickers["happy"])))
   dp.add_handler(MessageHandler(regexFilter("fast"), react(maiStickers["fast"])))
   
   # immutable sticker reactions

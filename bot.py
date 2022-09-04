@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 BOSS = "sidonie_b"
 helpfulMood = False
 
-theClassStickers = {
+classPack = {
   "rocket"      : "CAACAgQAAxkBAAEFv6xjE5C5lhvQHF9vTLzKSYpb0LPtHwACyAsAAsH_oVABPRbhJX7PtikE",
   "turtle"      : "CAACAgQAAxkBAAEFv65jE5DSt-GVLH4lXgoFZqXamOhstQACxwwAAl6eqFBd0IREErULECkE",
   "bird"        : "CAACAgQAAxkBAAEFv7BjE5Dm5svcfZDifjqvimBsqVNxiQACugoAAnAFqFDkbcaNnqE3NSkE",
@@ -34,7 +34,7 @@ theClassStickers = {
   "sylvain"     : "CAACAgQAAxkBAAEFv7xjE5DxQaTd7Auri5FsHMSf_H9wygAC0woAAra-qFDvV1-zx6_HLykE"
   }
 
-maiStickers = {
+maiPack = {
   "tirwed"  : "CAACAgQAAxkBAAEFwDRjE8_5ffUrP-3xbH1paVMSFfCaYwACEQoAAi5AaFDM6Wnglkif7ykE",
   "happy"   : "CAACAgQAAxkBAAEFwDZjE8_8M_Zu_50B267iu1wJ0kBMSgACsRMAAnOssVD63eo-raRwrykE",
   "sadge"   : "CAACAgQAAxkBAAEFwB9jE8lxRTLAeOR47XfrAts-AlljLgACJwoAAgudsFAVhZgqZ46DhikE",
@@ -42,7 +42,7 @@ maiStickers = {
   "gay"     : "CAACAgQAAxkBAAEFwB1jE8ll62np5bw1GSb7Is0pW66Q5QACzgsAAnHZ4FBw8LWarlpc-ykE"
   }
 
-supremacyStickers = {
+supremacyPack = {
   "piazza bean"     :"CAACAgQAAxkBAAEFwKxjFHM7Pddle1wo7polaIZEnkxXZwAClw4AAkFOaFD4uNZmbs25fykE",
   "killer urs"      : "CAACAgQAAxkBAAEFwK5jFHNGzXsLvjZJwhM91m9nLyH1tAACTQoAAsmlaVCGv5FT1HtorikE",
   "jeanne"          : "CAACAgQAAxkBAAEFwLBjFHNQykP0vkhJ9qDc9OnZJC0RbQACnwwAAg7OaVBIJPZRQb64dSkE",
@@ -88,7 +88,7 @@ supremacyStickers = {
   "sacrebleu"       : "CAACAgQAAxkBAAEFwP5jFHXfJDtmeeWIlmcD6nia9jw64AACAg4AAhi5mVE6d_x3US0zfSkE"
 }
 
-cyrielleStickers = {
+cyriellePack = {
   "not hehe"  : "CAACAgQAAxkBAAEFwBtjE8eJPmfCPSULZas6K7CK7uuxbwACgwwAAjcQ8FD8WTJixoO_9CkE",
   "aie"       : "CAACAgQAAxkBAAEFwBljE8eHYOjUIhljmH2WGZecAif62wACSw0AApvA8VAAAScgDvSNStYpBA",
   "no spray"  : "CAACAgQAAxkBAAEFwCZjE8puZUyvPonz-ly4KXMX8XagVAACOQ4AAn99sFDTRqqD6tXZfSkE"
@@ -143,55 +143,55 @@ def main():
   # dp.add_handler(CommandHandler("start", start))
   # dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
-  dp.add_handler(CommandHandler("test", react(maiStickers["happy"])))
+  dp.add_handler(CommandHandler("test", react(maiPack["happy"])))
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
-  autoSticker(supremacyStickers["sacrebleu"], "test2", "test1")
-  autoSticker(supremacyStickers["sacrejaune"], "test3")
-  autoSticker(supremacyStickers["blasphème pink"], "test4", exceptUsers=["quartztz"])
-  autoSticker(supremacyStickers["blasphème jaune"], "test5", exceptUsers=["sidonie_b"])
+  autoSticker(supremacyPack["sacrebleu"], "test2", "test1")
+  autoSticker(supremacyPack["sacrejaune"], "test3")
+  autoSticker(supremacyPack["blasphème pink"], "test4", exceptUsers=["quartztz"])
+  autoSticker(supremacyPack["blasphème jaune"], "test5", exceptUsers=["sidonie_b"])
 
   # hehe
-  # autoSticker(dp, cyrielleStickers["not hehe"], "hehe", exceptUsers=["sidonie_b"])
+  autoSticker(cyriellePack["not hehe"], "hehe", exceptUsers=["sidonie_b"])
   # aie aie aie
-  # autoSticker(dp, cyrielleStickers["aie"], "aie aie aie", "aïe aïe aïe")
+  autoSticker(cyriellePack["aie"], "aie aie aie", "aïe aïe aïe")
   # no shrug
-  # autoSticker(dp, cyrielleStickers["no spray"], "shrug")
+  autoSticker(cyriellePack["no spray"], "shrug")
   # no shower
-  dp.add_handler(MessageHandler(regexFilter("douchs"), react(supremacyStickers["douchs"])))
+  autoSticker(supremacyPack["douchs"], "douchs")
   # cap
-  dp.add_handler(MessageHandler(regexFilter("cap", "casquette"), react(supremacyStickers["cap"])))
+  autoSticker(supremacyPack["cap"], "cap", "casquette")
   # police
-  dp.add_handler(MessageHandler(regexFilter("police", "st sulpice"), react(supremacyStickers["police"])))
+  autoSticker(supremacyPack["police"], "police", "st sulpice")
   
   # maï sticker reactions
-  dp.add_handler(MessageHandler(regexFilter("sadge"), react(maiStickers["sadge"])))
-  dp.add_handler(MessageHandler(regexFilter("gay"), react(maiStickers["gay"])))
-  dp.add_handler(MessageHandler(regexFilter("tired", "tirwed"), react(maiStickers["tirwed"])))
-  dp.add_handler(MessageHandler(regexFilter("happy", "h\^\^py"), react(maiStickers["happy"])))
-  dp.add_handler(MessageHandler(regexFilter("fast"), react(maiStickers["fast"])))
+  dp.add_handler(MessageHandler(regexFilter("sadge"), react(maiPack["sadge"])))
+  dp.add_handler(MessageHandler(regexFilter("gay"), react(maiPack["gay"])))
+  dp.add_handler(MessageHandler(regexFilter("tired", "tirwed"), react(maiPack["tirwed"])))
+  dp.add_handler(MessageHandler(regexFilter("happy", "h\^\^py"), react(maiPack["happy"])))
+  dp.add_handler(MessageHandler(regexFilter("fast"), react(maiPack["fast"])))
   
   # immutable sticker reactions
-  dp.add_handler(MessageHandler(regexFilter("rocket science","space", "nerd"), react(theClassStickers["rocket"])))
-  dp.add_handler(MessageHandler(regexFilter("cute", "aww", "turtle"), react(theClassStickers["turtle"])))
-  dp.add_handler(MessageHandler(regexFilter("immutable", "immubot", "birb"), react(theClassStickers["bird"])))
-  dp.add_handler(MessageHandler(regexFilter("weird", "clotilde", "kluter"), react(theClassStickers["man"])))
+  dp.add_handler(MessageHandler(regexFilter("rocket science","space", "nerd"), react(classPack["rocket"])))
+  dp.add_handler(MessageHandler(regexFilter("cute", "aww", "turtle"), react(classPack["turtle"])))
+  dp.add_handler(MessageHandler(regexFilter("immutable", "immubot", "birb"), react(classPack["bird"])))
+  dp.add_handler(MessageHandler(regexFilter("weird", "clotilde", "kluter"), react(classPack["man"])))
   dp.add_handler(MessageHandler(regexFilter("triste", 
                                             "ça dégoute", 
                                             "dégoute", 
                                             "degoute", 
-                                            "tristitude"), react(theClassStickers["cry"])))
+                                            "tristitude"), react(classPack["cry"])))
   dp.add_handler(MessageHandler(regexFilter("wtf", 
                                             "i never lie", 
                                             "never lied", 
                                             "andiamo", 
                                             "aggiudi cato",
                                             "big fan of harm", 
-                                            "bitch i lie all the time too"), react(theClassStickers["jacopo"])))
-  dp.add_handler(MessageHandler(regexFilter("barbacrise", "barbapapa", "terrible"), react(theClassStickers["barbacrise"])))
-  dp.add_handler(MessageHandler(regexFilter("glutentag", "allemand"), react(theClassStickers["german"])))
-  dp.add_handler(MessageHandler(regexFilter("just do it", "zylvanos"), react(theClassStickers["sylvain"])))
+                                            "bitch i lie all the time too"), react(classPack["jacopo"])))
+  dp.add_handler(MessageHandler(regexFilter("barbacrise", "barbapapa", "terrible"), react(classPack["barbacrise"])))
+  dp.add_handler(MessageHandler(regexFilter("glutentag", "allemand"), react(classPack["german"])))
+  dp.add_handler(MessageHandler(regexFilter("just do it", "zylvanos"), react(classPack["sylvain"])))
   
   dp.add_error_handler(error)
 

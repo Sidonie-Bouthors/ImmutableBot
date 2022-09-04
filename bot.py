@@ -156,8 +156,8 @@ def nospray(update, context):
   update.message.reply_sticker(cyrielleStickers["no spray"], quote=False)
 
 ##### TESTS #####
-def react(stickerPack, stickerName):
-  return lambda update, context : update.message.reply_sticker(stickerPack[stickerName], quote=False)
+def react(sticker):
+  return lambda update, context : update.message.reply_sticker(sticker, quote=False)
   
 
 
@@ -181,7 +181,7 @@ def main():
   # dp.add_handler(CommandHandler("start", start))
   # dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
-  dp.add_handler(CommandHandler("test", react(maiStickers, "happy")))
+  dp.add_handler(CommandHandler("test", react(maiStickers["happy"])))
 
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"caffeine", re.IGNORECASE))
@@ -193,7 +193,7 @@ def main():
 				| Filters.regex(re.compile(r"culte", re.IGNORECASE)), disapproval))
 
   # hehe
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), hehe))
+  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), cyrielleStickers["not hehe"]))
   # aie aie aie
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"aie aie aie", re.IGNORECASE))
                                 | Filters.regex(re.compile(r"aïe aïe aïe", re.IGNORECASE)), aie))

@@ -114,10 +114,15 @@ def regexFilter(main, *keywords) :
   for k in keywords :
     filters |= Filters.regex(re.compile(k, re.IGNORECASE))
   return filters
+  
+def autoSticker(dp, reaction, exceptUsers, *keywords) :
+  dp.add_handler(MessageHandler(regexFilter(keywords), react(reaction, exceptUsers)))
 
 ##### Reactions #####
-def react(sticker, exceptUser = None):
-  return lambda update, context : update.message.reply_sticker(sticker, quote=False) if not update.message.from_user.username == exceptUser else None
+def react(sticker, exceptUsers):
+  return lambda update, context : update.message.reply_sticker(sticker, quote=False) \
+                                    if not update.message.from_user.username in exceptUsers \
+                                    else None
  
 def disapproval(update, context):
   # if not update.message.from_user.username == "sidonie_b" :
@@ -142,69 +147,58 @@ def main():
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
+  autoSticker(dp, supremacyStickers["sacrebleu"], [], "test1")
+  autoSticker(dp, supremacyStickers["blasphème pink"], ["quartztz"], "test1")
+  autoSticker(dp, supremacyStickers["blasphème jaune"], ["sidonie_b"], "test2")
+
   # hehe
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"hehe", re.IGNORECASE)), react(cyrielleStickers["not hehe"], BOSS)))
+  dp.add_handler(MessageHandler(regexFilter("hehe"), react(cyrielleStickers["not hehe"], BOSS)))
   # aie aie aie
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"aie aie aie", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"aïe aïe aïe", re.IGNORECASE)), react(cyrielleStickers["aie"])))
+  dp.add_handler(MessageHandler(regexFilter("aie aie aie", "aïe aïe aïe"), react(cyrielleStickers["aie"])))
   # no shrug
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"shrug", re.IGNORECASE)), react(cyrielleStickers["no spray"])))
+  dp.add_handler(MessageHandler(regexFilter("shrug"), react(cyrielleStickers["no spray"])))
   # no shower
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"douchs", re.IGNORECASE)), react(supremacyStickers["douchs"])))
+  dp.add_handler(MessageHandler(regexFilter("douchs"), react(supremacyStickers["douchs"])))
   # cap
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"cap", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"casquette", re.IGNORECASE)), react(supremacyStickers["cap"])))
+  dp.add_handler(MessageHandler(regexFilter("cap", "casquette"), react(supremacyStickers["cap"])))
   # police
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"police", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"st sulpice", re.IGNORECASE)), react(supremacyStickers["police"])))
+  dp.add_handler(MessageHandler(regexFilter("police", "st sulpice"), react(supremacyStickers["police"])))
   
   # maï sticker reactions
   dp.add_handler(MessageHandler(regexFilter("sadge"), react(maiStickers["sadge"])))
   dp.add_handler(MessageHandler(regexFilter("gay"), react(maiStickers["gay"])))
   dp.add_handler(MessageHandler(regexFilter("tired", "tirwed"), react(maiStickers["tirwed"])))
-  dp.add_handler(MessageHandler(regexFilter("happy", "ha\^\^py"), react(maiStickers["happy"])))
+  dp.add_handler(MessageHandler(regexFilter("happy", "h\^\^py"), react(maiStickers["happy"])))
   dp.add_handler(MessageHandler(regexFilter("fast"), react(maiStickers["fast"])))
   
   # immutable sticker reactions
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"rocket science", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"space", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"nerd", re.IGNORECASE)), react(theClassStickers["rocket"])))
+  dp.add_handler(MessageHandler(regexFilter("rocket science","space", "nerd"), react(theClassStickers["rocket"])))
   
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"cute", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"aww", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"turtle", re.IGNORECASE)), react(theClassStickers["turtle"])))
+  dp.add_handler(MessageHandler(regexFilter("cute", "aww", "turtle"), react(theClassStickers["turtle"])))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"immutable", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"immubot", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"birb", re.IGNORECASE)), react(theClassStickers["bird"])))
+  dp.add_handler(MessageHandler(regexFilter("immutable", "immubot", "birb"), react(theClassStickers["bird"])))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"weird", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"clotilde", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"kluter", re.IGNORECASE)), react(theClassStickers["man"])))
+  dp.add_handler(MessageHandler(regexFilter("weird", "clotilde", "kluter"), react(theClassStickers["man"])))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"triste", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"ça dégoute", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"dégoute", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"degoute", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"tristitude", re.IGNORECASE)), react(theClassStickers["cry"])))
+  dp.add_handler(MessageHandler(regexFilter("triste", 
+                                            "ça dégoute", 
+                                            "dégoute", 
+                                            "degoute", 
+                                            "tristitude"), react(theClassStickers["cry"])))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"wtf", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"i never lie", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"never lied", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"andiamo", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"aggiudi cato", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"big fan of harm", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"bitch i lie all the time too", re.IGNORECASE)), react(theClassStickers["jacopo"])))
+  dp.add_handler(MessageHandler(regexFilter("wtf", 
+                                            "i never lie", 
+                                            "never lied", 
+                                            "andiamo", 
+                                            "aggiudi cato",
+                                            "big fan of harm", 
+                                            "bitch i lie all the time too"), react(theClassStickers["jacopo"])))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"barbacrise", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"barbapapa", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"terrible", re.IGNORECASE)), react(theClassStickers["barbacrise"])))
+  dp.add_handler(MessageHandler(regexFilter("barbacrise", "barbapapa", "terrible"), react(theClassStickers["barbacrise"])))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"glutentag", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"allemand", re.IGNORECASE)), react(theClassStickers["german"])))
+  dp.add_handler(MessageHandler(regexFilter("glutentag", "allemand"), react(theClassStickers["german"])))
 
-  dp.add_handler(MessageHandler(Filters.regex(re.compile(r"just do it", re.IGNORECASE))
-                                | Filters.regex(re.compile(r"zylvanos", re.IGNORECASE)), react(theClassStickers["sylvain"])))
+  dp.add_handler(MessageHandler(regexFilter("just do it", "zylvanos"), react(theClassStickers["sylvain"])))
   
   dp.add_error_handler(error)
 

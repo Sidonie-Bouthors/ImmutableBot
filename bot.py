@@ -119,7 +119,7 @@ def autoSticker(dp, reaction, exceptUsers, *keywords) :
   dp.add_handler(MessageHandler(regexFilter(keywords), react(reaction, exceptUsers)))
 
 ##### Reactions #####
-def react(sticker, exceptUsers):
+def react(sticker, exceptUsers=[]):
   return lambda update, context : update.message.reply_sticker(sticker, quote=False) \
                                     if not update.message.from_user.username in exceptUsers \
                                     else None

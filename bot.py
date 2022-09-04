@@ -115,14 +115,23 @@ def regexFilter(main, *keywords) :
     filters |= Filters.regex(re.compile(k, re.IGNORECASE))
   return filters
   
-def autoSticker(reaction, *keywords, exceptUsers=[]) :
-  dp.add_handler(MessageHandler(regexFilter(*keywords), react(reaction, exceptUsers)))
+def autoMessage(message, *keywords, exceptUsers=[]) :
+  dp.add_handler(MessageHandler(regexFilter(*keywords), reactText(message, exceptUsers)))
 
-def react(sticker, exceptUsers=[]):
+def reactText(message, exceptUsers):
+  return lambda update, context : update.message.reply_text(message) \
+                                    if not update.message.from_user.username in exceptUsers \
+                                    else None
+
+def autoSticker(reaction, *keywords, exceptUsers=[]) :
+  dp.add_handler(MessageHandler(regexFilter(*keywords), reactSticker(reaction, exceptUsers)))
+
+def reactSticker(sticker, exceptUsers=[]):
   return lambda update, context : update.message.reply_sticker(sticker, quote=False) \
                                     if not update.message.from_user.username in exceptUsers \
                                     else None
- 
+
+
 def disapproval(update, context):
   # if not update.message.from_user.username == "sidonie_b" :
   update.message.reply_text("*Disapproval*")
@@ -143,13 +152,16 @@ def main():
   # dp.add_handler(CommandHandler("start", start))
   # dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
-  dp.add_handler(CommandHandler("test", react(maiPack["happy"])))
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
+
+  autoMessage("BOOM", "test")
 
   autoSticker(cyriellePack["not hehe"], "hehe", exceptUsers=["sidonie_b"])
   autoSticker(cyriellePack["aie"],      "aie aie aie", "aïe aïe aïe")
   autoSticker(cyriellePack["no spray"], "shrug")
+  
+  autoSticker(supremacyPack["bazooka"], "bazooka", "squirell", "boom")
   autoSticker(supremacyPack["douchs"],  "douchs")
   autoSticker(supremacyPack["cap"],     "cap", "casquette")
   autoSticker(supremacyPack["police"],  "police", "st sulpice")

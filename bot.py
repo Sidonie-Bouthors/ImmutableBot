@@ -152,7 +152,7 @@ def main():
   autoSticker(dp, supremacyStickers["blasphème jaune"], ["sidonie_b"], "test2")
 
   # hehe
-  dp.add_handler(MessageHandler(regexFilter("hehe"), react(cyrielleStickers["not hehe"], BOSS)))
+  # dp.add_handler(MessageHandler(regexFilter("hehe"), react(cyrielleStickers["not hehe"], BOSS)))
   # aie aie aie
   dp.add_handler(MessageHandler(regexFilter("aie aie aie", "aïe aïe aïe"), react(cyrielleStickers["aie"])))
   # no shrug
@@ -173,19 +173,14 @@ def main():
   
   # immutable sticker reactions
   dp.add_handler(MessageHandler(regexFilter("rocket science","space", "nerd"), react(theClassStickers["rocket"])))
-  
   dp.add_handler(MessageHandler(regexFilter("cute", "aww", "turtle"), react(theClassStickers["turtle"])))
-
   dp.add_handler(MessageHandler(regexFilter("immutable", "immubot", "birb"), react(theClassStickers["bird"])))
-
   dp.add_handler(MessageHandler(regexFilter("weird", "clotilde", "kluter"), react(theClassStickers["man"])))
-
   dp.add_handler(MessageHandler(regexFilter("triste", 
                                             "ça dégoute", 
                                             "dégoute", 
                                             "degoute", 
                                             "tristitude"), react(theClassStickers["cry"])))
-
   dp.add_handler(MessageHandler(regexFilter("wtf", 
                                             "i never lie", 
                                             "never lied", 
@@ -193,11 +188,8 @@ def main():
                                             "aggiudi cato",
                                             "big fan of harm", 
                                             "bitch i lie all the time too"), react(theClassStickers["jacopo"])))
-
   dp.add_handler(MessageHandler(regexFilter("barbacrise", "barbapapa", "terrible"), react(theClassStickers["barbacrise"])))
-
   dp.add_handler(MessageHandler(regexFilter("glutentag", "allemand"), react(theClassStickers["german"])))
-
   dp.add_handler(MessageHandler(regexFilter("just do it", "zylvanos"), react(theClassStickers["sylvain"])))
   
   dp.add_error_handler(error)

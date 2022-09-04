@@ -115,7 +115,7 @@ def regexFilter(main, *keywords) :
     filters |= Filters.regex(re.compile(k, re.IGNORECASE))
   return filters
   
-def autoSticker(dp, reaction, *keywords, exceptUsers=[]) :
+def autoSticker(reaction, *keywords, exceptUsers=[]) :
   dp.add_handler(MessageHandler(regexFilter(*keywords), react(reaction, exceptUsers)))
 
 def react(sticker, exceptUsers=[]):
@@ -137,6 +137,7 @@ def error(update, context):
 def main(): 
   updater = Updater(TOKEN, use_context = True)
 
+  global dp
   dp = updater.dispatcher
 
   # dp.add_handler(CommandHandler("start", start))
@@ -146,17 +147,17 @@ def main():
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
-  autoSticker(dp, supremacyStickers["sacrebleu"], "test2", "test1")
-  autoSticker(dp, supremacyStickers["sacrejaune"], "test3")
-  autoSticker(dp, supremacyStickers["blasphème pink"], "test4", exceptUsers=["quartztz"])
-  autoSticker(dp, supremacyStickers["blasphème jaune"], "test5", exceptUsers=["sidonie_b"])
+  autoSticker(supremacyStickers["sacrebleu"], "test2", "test1")
+  autoSticker(supremacyStickers["sacrejaune"], "test3")
+  autoSticker(supremacyStickers["blasphème pink"], "test4", exceptUsers=["quartztz"])
+  autoSticker(supremacyStickers["blasphème jaune"], "test5", exceptUsers=["sidonie_b"])
 
   # hehe
-  # dp.add_handler(MessageHandler(regexFilter("hehe"), react(cyrielleStickers["not hehe"], BOSS)))
+  # autoSticker(dp, cyrielleStickers["not hehe"], "hehe", exceptUsers=["sidonie_b"])
   # aie aie aie
-  dp.add_handler(MessageHandler(regexFilter("aie aie aie", "aïe aïe aïe"), react(cyrielleStickers["aie"])))
+  # autoSticker(dp, cyrielleStickers["aie"], "aie aie aie", "aïe aïe aïe")
   # no shrug
-  dp.add_handler(MessageHandler(regexFilter("shrug"), react(cyrielleStickers["no spray"])))
+  # autoSticker(dp, cyrielleStickers["no spray"], "shrug")
   # no shower
   dp.add_handler(MessageHandler(regexFilter("douchs"), react(supremacyStickers["douchs"])))
   # cap

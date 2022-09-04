@@ -156,8 +156,9 @@ def nospray(update, context):
   update.message.reply_sticker(cyrielleStickers["no spray"], quote=False)
 
 ##### TESTS #####
-def react(update, context, stickerPack, stickerName):
-  update.message.reply_sticker(stickerPack[stickerName], quote=False)
+def react(stickerPack, stickerName):
+  return lambda update, context : update.message.reply_sticker(stickerPack[stickerName], quote=False)
+  
 
 
 ##### Text Reactions #####
@@ -180,7 +181,7 @@ def main():
   # dp.add_handler(CommandHandler("start", start))
   # dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
-  # dp.add_handler(CommandHandler("test", react(stickerPack=maiStickers, stickerName="happy")))
+  dp.add_handler(CommandHandler("test", react(maiStickers, "happy")))
 
 
   dp.add_handler(MessageHandler(Filters.regex(re.compile(r"caffeine", re.IGNORECASE))

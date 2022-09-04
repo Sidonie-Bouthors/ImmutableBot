@@ -118,7 +118,6 @@ def regexFilter(main, *keywords) :
 def autoSticker(dp, reaction, *keywords, exceptUsers=[]) :
   dp.add_handler(MessageHandler(regexFilter(*keywords), react(reaction, exceptUsers)))
 
-##### Reactions #####
 def react(sticker, exceptUsers=[]):
   return lambda update, context : update.message.reply_sticker(sticker, quote=False) \
                                     if not update.message.from_user.username in exceptUsers \
@@ -147,10 +146,10 @@ def main():
 
   dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
 
-  autoSticker(dp, supremacyStickers["sacrebleu"], "test3", "test1")
-  autoSticker(dp, supremacyStickers["sacrejaune"], "test2")
-  # autoSticker(dp, supremacyStickers["blasphème pink"], ["quartztz"], "test1")
-  # autoSticker(dp, supremacyStickers["blasphème jaune"], ["sidonie_b"], "test2")
+  autoSticker(dp, supremacyStickers["sacrebleu"], "test2", "test1")
+  autoSticker(dp, supremacyStickers["sacrejaune"], "test3")
+  autoSticker(dp, supremacyStickers["blasphème pink"], "test4", exceptUsers=["quartztz"])
+  autoSticker(dp, supremacyStickers["blasphème jaune"], "test5", exceptUsers=["sidonie_b"])
 
   # hehe
   # dp.add_handler(MessageHandler(regexFilter("hehe"), react(cyrielleStickers["not hehe"], BOSS)))

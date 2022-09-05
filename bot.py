@@ -19,7 +19,7 @@ logging.basicConfig(format = "%(asctime)s - %(name)s - %(levelname)s  - %(messag
 
 logger = logging.getLogger(__name__)
 
-BOSS = "sidonie_b"
+reactive = True
 helpfulMood = False
 
 classPack = {
@@ -107,8 +107,6 @@ def help(update, context):
       """You don't deserve my help
       """, parse_mode="HTML")
 
-##### TESTS #####
-
 def regexFilter(main, *keywords) : 
   filters = Filters.regex(re.compile(main, re.IGNORECASE))
   for k in keywords :
@@ -119,25 +117,42 @@ def autoMessage(message, *keywords, exceptUsers=[]) :
   dp.add_handler(MessageHandler(regexFilter(*keywords), reactText(message, exceptUsers)))
 
 def reactText(message, exceptUsers):
+  global reactive
   return lambda update, context : update.message.reply_text(message) \
-                                    if not update.message.from_user.username in exceptUsers \
+                                    if (not update.message.from_user.username in exceptUsers) \
+                                      and (not reactive) \
                                     else None
 
 def autoSticker(reaction, *keywords, exceptUsers=[]) :
   dp.add_handler(MessageHandler(regexFilter(*keywords), reactSticker(reaction, exceptUsers)))
 
 def reactSticker(sticker, exceptUsers=[]):
+  global reactive
   return lambda update, context : update.message.reply_sticker(sticker, quote=False) \
-                                    if not update.message.from_user.username in exceptUsers \
+                                    if (not update.message.from_user.username in exceptUsers) \
+                                      and reactive \
                                     else None
 
-
-def disapproval(update, context):
-  # if not update.message.from_user.username == "sidonie_b" :
-  update.message.reply_text("*Disapproval*")
-
 def trial(update, context):
-  update.message.reply_text("Trial is in session!")
+  global reactive
+  if reactive :
+    update.message.reply_text("Trial is in session!")
+
+def shutup(update, context):
+  global reactive
+  if reactive :
+    reactive = False
+    update.message.reply_text("Alright :') goodbye")
+  else :
+    update.message.reply_text("I'm already quiet :(")
+
+def comeback(update, context):
+  global reactive
+  if not reactive :
+    reactive = True
+    update.message.reply_text("Hullo! I'm back :)")
+  else :
+    update.message.reply_text("I'm already right here :)")
 
 def error(update, context):
   logger.error(f"You broke something, fix it : {context.error}")
@@ -152,10 +167,12 @@ def main():
   # dp.add_handler(CommandHandler("start", start))
   # dp.add_handler(CommandHandler("help", help))
   dp.add_handler(CommandHandler("trial", trial))
+  dp.add_handler(CommandHandler("shutup", shutup))
+  dp.add_handler(CommandHandler("comeback", comeback))
+  dp.add_handler(MessageHandler(regexFilter("shut up immubot"), shutup))
+  dp.add_handler(MessageHandler(regexFilter("come back immubot"), comeback))
 
-  dp.add_handler(MessageHandler(regexFilter("coffee", "caffeine", "café", "caféine", "maté", "secte", "culte"), disapproval))
-
-  autoMessage("BOOM", "test")
+  autoMessage("*Disapproval*", "coffee", "caffeine", "café", "caféine", "maté", "secte", "culte", exceptUsers=["sidonie_b"])
 
   autoSticker(cyriellePack["not hehe"], "hehe", exceptUsers=["sidonie_b"])
   autoSticker(cyriellePack["aie"],      "aie aie aie", "aïe aïe aïe")

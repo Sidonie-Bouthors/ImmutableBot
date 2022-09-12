@@ -176,6 +176,7 @@ def main():
   dp.add_handler(CommandHandler("trial", trial))
   dp.add_handler(CommandHandler("shutup", shutup))
   dp.add_handler(CommandHandler("comeback", comeback))
+  dp.add_handler(CommandHandler("comic", xkcd))
   dp.add_handler(MessageHandler(regexFilter("shut up immubot"), shutup))
   dp.add_handler(MessageHandler(regexFilter("come back immubot"), comeback))
 

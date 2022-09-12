@@ -11,6 +11,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 PORT = int(os.environ.get('PORT', 5000))
 # PORT = int(os.environ.get('PORT', 8443))
 TOKEN = "5663089404:AAGO-_fsJfZkMTKLF5XijNvDLPgc_F8Iil4"
+XKCD_URL = "https://xkcd.com/info.0.json"
 
 
 # Enable logging
@@ -120,7 +121,7 @@ def reactText(message, exceptUsers):
   global reactive
   return lambda update, context : update.message.reply_text(message) \
                                     if (not update.message.from_user.username in exceptUsers) \
-                                      and (not reactive) \
+                                      and reactive \
                                     else None
 
 def autoSticker(reaction, *keywords, exceptUsers=[]) :
@@ -137,6 +138,12 @@ def trial(update, context):
   global reactive
   if reactive :
     update.message.reply_text("Trial is in session!")
+
+def xkcd(update, context):
+  res = requests.get(XKCD_URL)
+  comic = res.json()[0]
+  update.message.bot.send_photo(update.message.chat.id, comic['img'])
+
 
 def shutup(update, context):
   global reactive

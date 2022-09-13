@@ -141,7 +141,7 @@ def trial(update, context):
 
 def xkcd(update, context):
   res = requests.get(XKCD_URL)
-  comic = res.json()[0]
+  comic = res.json()
   update.message.bot.send_photo(update.message.chat.id, comic['img'])
 
 

@@ -145,7 +145,7 @@ def xkcd(update, context):
   curr = requests.get(XKCD_CURRENT_URL)
   curr_comic = curr.json()
   curr_num = curr_comic['num']
-  rand = requests.get(XKCD_URL1 + random.randint(1, curr_num))
+  rand = requests.get(XKCD_URL1 + random.randint(1, curr_num) + XKCD_URL2)
   rand_comic = rand.json()
   update.message.bot.send_photo(update.message.chat.id, rand_comic['img'])
 

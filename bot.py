@@ -11,7 +11,9 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 PORT = int(os.environ.get('PORT', 5000))
 # PORT = int(os.environ.get('PORT', 8443))
 TOKEN = "5663089404:AAGO-_fsJfZkMTKLF5XijNvDLPgc_F8Iil4"
-XKCD_URL = "https://xkcd.com/info.0.json"
+XKCD_CURRENT_URL = "https://xkcd.com/info.0.json"
+XKCD_URL1 = "https://xkcd.com/"
+XKCD_URL2 = "/info.0.json"
 
 
 # Enable logging
@@ -140,9 +142,12 @@ def trial(update, context):
     update.message.reply_text("Trial is in session!")
 
 def xkcd(update, context):
-  res = requests.get(XKCD_URL)
-  comic = res.json()
-  update.message.bot.send_photo(update.message.chat.id, comic['img'])
+  curr = requests.get(XKCD_CURRENT_URL)
+  curr_comic = curr.json()
+  curr_num = curr_comic['num']
+  rand = requests.get(XKCD_URL1 + random.randint(1, curr_num))
+  rand_comic = rand.json()
+  update.message.bot.send_photo(update.message.chat.id, rand_comic['img'])
 
 
 def shutup(update, context):

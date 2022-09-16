@@ -88,7 +88,18 @@ supremacyPack = {
   "blasphème pink"  : "CAACAgQAAxkBAAEFwPhjFHXPyvDbmsT9gY16bp9DQ1eRMQAClQsAAkj0mVGOaC7k8uLhHCkE",
   "blasphème jaune" : "CAACAgQAAxkBAAEFwPpjFHXcMDSayyM7dhk0_99f8lpEFgACtAwAAuCQmVFi8bVOG0K_9CkE",
   "sacrejaune"      : "CAACAgQAAxkBAAEFwPxjFHXePSZbZpu3pE3k1IqmjzY-UAACmwwAAnz-mVEFaLFC657yCikE",
-  "sacrebleu"       : "CAACAgQAAxkBAAEFwP5jFHXfJDtmeeWIlmcD6nia9jw64AACAg4AAhi5mVE6d_x3US0zfSkE"
+  "sacrebleu"       : "CAACAgQAAxkBAAEFwP5jFHXfJDtmeeWIlmcD6nia9jw64AACAg4AAhi5mVE6d_x3US0zfSkE",
+  "fuck"            : "CAACAgQAAxkBAAEF2X1jJKP-hbTnkpl1zwuQcJmoIlaBkwACkg0AAsHRCVFLXKcOp_ZljCkE",
+  "twist villain"   : "CAACAgQAAxkBAAEF2X9jJKQDDjvWG1DVNso5PIIAAUXOQaAAAtoNAAKVcQFRTwWdJ1HVgTkpBA",
+  "alonso"          : "CAACAgQAAxkBAAEF2YFjJKQJ6Qm2oad0DU1EdaMS_t9fvQACKw4AAubbCVHUU9Ym_g0hUSkE",
+  "jacopo dumb"     : "CAACAgQAAxkBAAEF2YNjJKQPkW27CcVRFkhG2xKRkyvEYwACyQsAAgOaCFGrrvac-Nz_LCkE",
+  "clueless"        : "CAACAgQAAxkBAAEF2YVjJKQWF5h67HUwNAebFurKGS4jXgACGw0AAvReCFH3TSj2PXFPDykE",
+  "francois kill"   : "CAACAgQAAxkBAAEF2YdjJKQausniMm3TefHxuPTUit65ZgADDwACyzkIUbYXZVlEQ42jKQQ",
+  "con des morts"   : "CAACAgQAAxkBAAEF2YljJKQetemGrubBNiKVNy_qIgABmkwAAm4NAALU4whRDxUPSzmHf7wpBA",
+  "pisse robinet"   : "CAACAgQAAxkBAAEF2YtjJKQjUtlCgfsz3fkdNmPmbel0HAAC-Q4AAnEZCFFzneQHPTn6MCkE",
+  "toxic pokemon"   : "CAACAgQAAxkBAAEF2Y1jJKQnLmzoQDzik_n6mYdd3glBcAACwhUAAh5cCFGlt8dTl5S8JykE",
+  "sweg"            : "CAACAgQAAxkBAAEF2Y9jJKQrzC6rlfl7DytDdR17cqmIGAACMhAAAlq7CVEdfgw76VuKlCkE",
+  "francois punch"  : "CAACAgQAAxkBAAEF2ZFjJKQvO7CgK2ULDFKyP6pYVJY8lgACIgwAAsFSCVFc43cESEkSbSkE"
 }
 
 cyriellePack = {
@@ -189,13 +200,25 @@ def main():
 
   autoSticker(cyriellePack["not hehe"], "hehe", exceptUsers=["sidonie_b"])
   autoSticker(cyriellePack["aie"],      "aie aie aie", "aïe aïe aïe")
-  autoSticker(cyriellePack["no spray"], "shrug")
+  autoSticker(cyriellePack["no spray"], "shrug", exceptUsers=["sidonie_b"])
   
-  autoSticker(supremacyPack["bazooka"], "bazooka", "squirell", "boom")
-  autoSticker(supremacyPack["douchs"],  "douchs")
-  autoSticker(supremacyPack["cap"],     "cap", "casquette")
-  autoSticker(supremacyPack["police"],  "police", "st sulpice")
-  
+  autoSticker(supremacyPack["bazooka"],       "bazooka", "squirell", "boom")
+  autoSticker(supremacyPack["douchs"],        "douchs")
+  autoSticker(supremacyPack["cap"],           "cap", "casquette")
+  autoSticker(supremacyPack["police"],        "police", "st sulpice")
+  autoSticker(supremacyPack["hallucination"], "hallucination", "je n'existe pas")
+  autoSticker(supremacyPack["sacrebleu"],     "sacrebleu")
+  autoSticker(supremacyPack["dont see it"],   "i don't see it", "blind", "denial")
+  autoSticker(supremacyPack["inginir"],       "inginir", "pro tip", "life hack")
+  autoSticker(supremacyPack["bad person"],    "sidonie", "bad person")
+  autoSticker(supremacyPack["toxic pokemon"], "toxic")
+  autoSticker(supremacyPack["francois kill"], "vaisselle", "françois killer")
+  autoSticker(supremacyPack["ptdsd"],         "ptdsd")
+  autoSticker(supremacyPack["regenbogen"],    "regenbogen")
+  autoSticker(supremacyPack["jacoppoo"],      "ppoo")
+  autoSticker(supremacyPack["schrecklich"],   "schreklich")
+  autoSticker(supremacyPack["sweg"],          "sweg")
+
   # maï sticker reactions
   autoSticker(maiPack["sadge"],   "sadge")
   autoSticker(maiPack["gay"],     "gay")
@@ -221,7 +244,8 @@ def main():
                                         "dégoute", 
                                         "degoute", 
                                         "tristitude")
-  autoSticker(classPack["jacopo"],      "wtf", 
+  autoSticker(classPack["jacopo"],      "what the fuck", 
+                                        "que catso"
                                         "i never lie", 
                                         "never lied", 
                                         "andiamo", 

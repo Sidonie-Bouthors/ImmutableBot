@@ -236,7 +236,7 @@ def main():
   autoSticker(supremacyPack["killer urs"],    "killer", "murder")
   autoSticker(supremacyPack["piazza bean"],   "piazza")
   autoSticker(supremacyPack["pisse robinet"], "pisse robinet", "pisse dans le robinet")
-  autoSticker(supremacyPack["schedule laugh"],"haha.", "very funny")
+  autoSticker(supremacyPack["schedule laugh"],"haha\.", "very funny")
   autoSticker(supremacyPack["sylvain omar"],  "coucou")
   autoSticker(supremacyPack["twist villain"], "twist villain")
 
